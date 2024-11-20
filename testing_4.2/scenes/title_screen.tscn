@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi0cjkqny3p7y"]
+
+[ext_resource type="Texture2D" uid="uid://cr2uxs1rwkd82" path="res://icon.svg" id="1_ym8k4"]
+
+[node name="Node" type="Node"]
+
+[node name="Screen" type="Node2D" parent="."]
+
+[node name="Logo" type="Sprite2D" parent="Screen"]
+texture = ExtResource("1_ym8k4")
+
+[node name="Camera2D" type="Camera2D" parent="Screen"]
+
+[node name="Label" type="Label" parent="Screen"]
+offset_left = -41.0
+offset_top = 74.0
+offset_right = 48.0
+offset_bottom = 97.0
+size_flags_horizontal = 4
+text = "title_screen
+"
+horizontal_alignment = 1

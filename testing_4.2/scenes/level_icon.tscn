@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://k3euftofuml8"]
+
+[ext_resource type="Script" path="res://scripts/level_icon.gd" id="1_7k326"]
+[ext_resource type="Material" uid="uid://bwtblhufb2at3" path="res://materials/standard.tres" id="2_4ib1y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_88uk5"]
+material = ExtResource("2_4ib1y")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1qqai"]
+
+[node name="Level_Icon" type="Area3D"]
+script = ExtResource("1_7k326")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_88uk5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1qqai")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

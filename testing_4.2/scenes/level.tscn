@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://csoym4toqxmon"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_7qjs8"]
+[ext_resource type="ArrayMesh" uid="uid://dli1o3hyi6my8" path="res://asset/tea_pot.obj" id="2_mygkn"]
+[ext_resource type="Material" uid="uid://bwtblhufb2at3" path="res://materials/standard.tres" id="3_yw0i8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c2jn4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ry715"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_7qjs8")
+
+[node name="Shadow" type="Node3D" parent="."]
+
+[node name="Wall" type="MeshInstance3D" parent="Shadow"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_c2jn4")
+
+[node name="Shadow_model" type="MeshInstance3D" parent="Shadow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.6849)
+mesh = ExtResource("2_mygkn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Shadow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64.1642)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05573, 3.45659, 12.34)
+
+[node name="View" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2117, 4.14748, 3.20951)
+
+[node name="Area_model" type="Area3D" parent="View"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="View/Area_model"]
+shape = SubResource("SphereShape3D_ry715")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="View/Area_model"]
+mesh = ExtResource("2_mygkn")
+surface_material_override/0 = ExtResource("3_yw0i8")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_right = 39.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="UI"]
+layout_mode = 0
+offset_right = 45.0
+offset_bottom = 31.0
+text = "Back
+"
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 46.0
+offset_right = 526.0
+offset_bottom = 95.0
+scale = Vector2(1.58075, 1.0078)
+text = "level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]

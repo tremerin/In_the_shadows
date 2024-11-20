@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://don8bwmdtg1r8"]
+
+[ext_resource type="PackedScene" uid="uid://k3euftofuml8" path="res://scenes/level_icon.tscn" id="1_7c3so"]
+[ext_resource type="Script" path="res://scripts/level_selector.gd" id="1_qqms7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s4fuy"]
+
+[node name="Level_Selector" type="Node3D"]
+script = ExtResource("1_qqms7")
+menu_scene = "res://scenes/main_menu.tscn"
+
+[node name="Eval_Levels" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Eval_Levels"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_s4fuy")
+
+[node name="Level_Icon1" parent="Eval_Levels" node_paths=PackedStringArray("Selector") instance=ExtResource("1_7c3so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68724, -0.226187, 0)
+Open = true
+Name = "Level 1"
+Clue = "\"You have three wishes\""
+Selector = NodePath("../..")
+
+[node name="Level_Icon2" parent="Eval_Levels" node_paths=PackedStringArray("Selector") instance=ExtResource("1_7c3so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.226187, 0)
+Open = true
+Name = "Level 2"
+Clue = "\"Has a good memory\""
+Selector = NodePath("../..")
+
+[node name="Level_Icon3" parent="Eval_Levels" node_paths=PackedStringArray("Selector") instance=ExtResource("1_7c3so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67169, -0.226187, 0)
+Open = true
+Name = "Level 3"
+Clue = "\"Up to you!\""
+Selector = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.87844, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.37516, 0)
+light_energy = 12.495
+spot_attenuation = 1.1487
+spot_angle = 41.57
+spot_angle_attenuation = 0.0947324
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 532.0
+offset_right = 705.0
+offset_bottom = 580.0
+scale = Vector2(0.993724, 1.21846)
+text = "Level selection"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Btn_menu" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 13.0
+offset_right = 133.0
+offset_bottom = 44.0
+text = "Back to Menu
+"
+
+[connection signal="pressed" from="Control/Btn_menu" to="." method="_on_btn_menu_pressed"]
